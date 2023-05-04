@@ -21,3 +21,4 @@ int main()
         cout<<(XOR(s-1)^XOR(f))<<"\n";
     }
 }
+//
