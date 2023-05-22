@@ -92,7 +92,7 @@ int main()
             }
         }
     }
-
+    ;
     int win[303];
     int cnt=1;
     for(int i=0;i<n-1;i++)
