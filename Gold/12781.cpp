@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-//ccw 알고리즘
 int ccw(int a,int b,int c,int d,int x,int y)
 {
     int result=(c-a)*(y-b)-(x-a)*(d-b);
