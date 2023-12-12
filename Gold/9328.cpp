@@ -105,7 +105,6 @@ int main()
                                 if(num>=0&&num<26){
                                     key[board[i][j]-'a']=1;
                                     board[i][j]='.';
-                                    //cout<<key[0]<<"\n";
                                     bfs(i,j);
                                     i=-1;
                                     j=m;
