@@ -15,7 +15,6 @@ int main()
     {
         sum=0;
         mid=(start+end)/2;
-
         for(int i=0;i<n;i++)
         {
             if(wood[i]-mid>0)sum+=(wood[i]-mid);
