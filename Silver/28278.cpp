@@ -3,6 +3,7 @@
 using namespace std;
 int n,ord,num;
 stack<int> s;
+
 int main()
 {
     ios_base :: sync_with_stdio(false);
