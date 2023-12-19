@@ -1,7 +1,6 @@
 #include <iostream>
 using namespace std;
 
-
 bool prime[250000]={1,1,0,0,};
 void func(){
     for(int i=2;i<=250000;i++){
