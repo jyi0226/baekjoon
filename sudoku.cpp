@@ -10,6 +10,7 @@ bool isNum2[9][10];
 bool isNum3[3][3][10];
 int val,x,y;
 bool sta=0;
+
 void func(){
     if(sta)return;
     for(int i=0;i<9;i++){
