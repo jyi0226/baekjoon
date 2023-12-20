@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <map>
 #include <string>
+
 using namespace std;
 string s;
 map<string,int> m;
