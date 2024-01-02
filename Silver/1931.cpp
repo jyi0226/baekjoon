@@ -3,9 +3,8 @@
 #include <algorithm>
 using namespace std;
 int n;
-int a,b;
+int a,b,t;
 vector<pair<int,int>> v;
-int t;
 int cnt=1;
 int main()
 {
