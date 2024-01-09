@@ -23,22 +23,5 @@ int main()
             }
         }
     }
-    /*
-    int i=x-1;
-    int j=y-1;
-    stack<int> st;
-    while(lcs[i][j]!=0){
-        if(lcs[i][j]==lcs[i][j-1])j--;
-        else if(lcs[i][j]==lcs[i-1][j])i--;
-        else if(lcs[i][j]-1==lcs[i-1][j-1]){
-            st.push(i);
-            i--;
-            j--;
-        }
-    }*/
     cout<<lcs[x-1][y-1][z-1];
-    /*for(int i=0;i<lcs[x-1][y-1];i++){
-        cout<<s1[st.top()];
-        st.pop();
-    }*/
 }
