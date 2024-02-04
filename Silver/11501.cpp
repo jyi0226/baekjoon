@@ -19,8 +19,7 @@ int main()
             cin>>num;
             s.push(num);
         }
-        int Max=0;
-        long long res=0;
+        long long Max=0,res=0;
         while(!s.empty()){
             Max=max(Max,s.top());
             res+=Max-s.top();
