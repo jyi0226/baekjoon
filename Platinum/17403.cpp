@@ -70,9 +70,9 @@ int main(){
     	}
     
     	sort(con.begin()+1,con.end(),comp);
-    	int Idx=con.size()-1;
-    	while(!ccw(con[0],con[Idx-1],con[Idx]))Idx--; //↓방향의 점들을 다시 정렬해줌
-    	reverse(con.begin()+Idx,con.end());
+    	//int Idx=con.size()-1;
+    	//while(!ccw(con[0],con[Idx-1],con[Idx]))Idx--; //↓방향의 점들을 다시 정렬해줌
+    	//reverse(con.begin()+Idx,con.end());
     
     	ans.push_back(con[0]);
     	ans.push_back(con[1]);
@@ -89,12 +89,12 @@ int main(){
     		}
     		ans.push_back(con[i]);
     	}
-    	
-    	cout<<ans.size()<<"\n";
+    	if(ans.size()<3)break;
+    	//cout<<ans.size()<<"\n";
     	for(int i=0;i<ans.size();i++){
     	    vis[ans[i].idx]=1;
     	    lev[ans[i].idx]=lv;
-    		cout<<ans[i].x<<" "<<ans[i].y<<"\n";
+    		//cout<<ans[i].x<<" "<<ans[i].y<<"\n";
     	}
     	lv++;
     	//for(int i=0;i<n;i++)cout<<vis[i]<<" ";
