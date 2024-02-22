@@ -22,6 +22,20 @@ void func(){
     while(!q.empty()){
         int cx=q.front().first;
         int cy=q.front().second;
+        q.pop();
+        char val=board[cx][cy];
+        for(int i=0;i<4;i++){
+            int nx=cx+dx[i];
+            int ny=cy+dy[i];
+            if(nx<0||ny<0||nx>=n||ny>=m)continue;
+            
+            if(!vis[nx][ny]&&board[nx][ny]=='.'){
+                board[nx][ny]=val;
+                cnt[val-'0']++;
+                vis[nx][ny]=1;
+                q.push({nx,ny});
+            }
+        }
     }
 }
 int main()
@@ -40,6 +54,6 @@ int main()
             }
         }
     }
-    
+    func();
     
 }
