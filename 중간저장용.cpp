@@ -10,7 +10,7 @@ char board[1010][1010];
 bool vis[1010][1010];
 int cnt[10];
 void func(){
-    queue<pair<int,int>> q;
+    queue<pair<int,int>> q,q2;
     for(int i=1;i<=p;i++){
         for(int j=0;j<P[i].size();j++){
             q.push(P[i][j]);
@@ -18,7 +18,12 @@ void func(){
             cnt[i]++;
         }
     }
-    
+    while(!q.empty()){
+        q2.push(q.front());
+        q.pop();
+        while(!q.empty()){
+            if(board[q.front().first][q.front().second]!=board[q2.front().first][q2.front().second])break;
+            
     while(!q.empty()){
         int cx=q.front().first;
         int cy=q.front().second;
