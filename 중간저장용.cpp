@@ -1,23 +1,19 @@
 #include <iostream>
-#include <stack>
+#include <queue>
 using namespace std;
-int n;
-long long h[101010];
+
+int board[20][20];
+int dice[7]={0,1,6,3,4,2,5};
+int n,m,x,y,k,ord,val;
+int nx,ny;
 int main()
 {
-    ios_base :: sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
-    while(1){
-        cin>>n;
-        if(n==0)break;
-        stack<int> s;
-        for(int i=0;i<n;i++)cin>>h[i];
-        for(int i=0;i<n;i++){
-            if(s.empty())s.push(i);
-            else{
-                if(s.top())
-            }
+    cin>>n>>m>>k;
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            cin>>board[i][j];
         }
-        
-        
     }
+    //먼저 bfs로 연결된 개수를 구하는 보드 하나 만듬
+    //이후에 주사위 굴려서 점수 합 구함
 }
