@@ -10,6 +10,7 @@ void func(int cur,int cnt){
     }
     else{
         bool flag=0;
+        
         if(cur<=n){
             for(int i=0;i<=cur;i++){
                 int x=cur-i;
