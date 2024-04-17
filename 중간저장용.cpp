@@ -1,124 +1,82 @@
 #include <iostream>
 #include <queue>
-#include <vector>
 using namespace std;
 
-int n,m,g,r;
-int res=0;
-int board[55][55];
-int water[55][55];
-int color[55][55];
-bool vis[55][55];
-int dx[4]={-1,0,1,0},dy[4]={0,1,0,-1};
-vector<pair<int,int>> v,R,G;
+char board[2][101010];
+int n,k;
+int dx[3]={0,-1,1},dy[3]={1,0,0};
+int a=0,b=0,c=0,d=0;
 
-int bfs(){
-    int cnt=0;
+bool vis[2][101010]={0,};
+int dist[2][101010]={0,};
+
+int bfs(int st,int ed){
+    
+    for(int i=0;i<2;i++){
+        for(int j=0;j<n;j++){
+            vis[i][j]=0;
+            dist[i][j]=0;
+        }
+    }
+    
     queue<pair<int,int>> q;
-    for(int i=0;i<R.size();i++){
-        q.push(R[i]);
-        vis[R[i].first][R[i].second]=1;
-        water[R[i].first][R[i].second]=1;
-        color[R[i].first][R[i].second]=1;
-    }
-    for(int i=0;i<G.size();i++){
-        q.push(G[i]);
-        vis[G[i].first][G[i].second]=1;
-        water[G[i].first][G[i].second]=1;
-        color[G[i].first][G[i].second]=2;
-    }
-    
-    
+    q.push({st,0});
+    vis[st][0]=1;
     while(!q.empty()){
         int cx=q.front().first;
         int cy=q.front().second;
         q.pop();
-        for(int i=0;i<4;i++){
+        
+        for(int i=0;i<3;i++){
             int nx=cx+dx[i];
             int ny=cy+dy[i];
             
-            if(nx<0||ny<0||nx>=n||ny>=m)continue;
-            else{
-                if(board[nx][ny]==0)continue;
-                else{
-                    if(!vis[nx][ny]){
-                        q.push({nx,ny});
-                        vis[nx][ny]=1;
-                        water[nx][ny]=water[cx][cy]+1;
-                        color[nx][ny]=color[cx][cy];
-                    }
-                    else{
-                        if(water[nx][ny]==water[cx][cy]+1&&color[nx][ny]==1&&color[cx][cy]==2){
-                            color[nx][ny]=3;
-                            cnt++;
-                        }
-                    } 
-                }
+            if(nx<0||nx>=2||ny>=n)continue;
+            
+            if(board[nx][ny]!='#'&&!vis[nx][ny]){   
+                vis[nx][ny]=1;
+                q.push({nx,ny});
+                dist[nx][ny]=dist[cx][cy]+1;
             }
         }
     }
-    
-    /*cout<<"\n"<<R.size()<<" "<<G.size()<<" "<<cnt<<"\n";
-    for(int i=0;i<n;i++){
-        for(int j=0;j<n;j++)cout<<board[i][j]<<" ";
-        cout<<"\n";
-    }
-    for(int i=0;i<n;i++){
-        for(int j=0;j<n;j++)cout<<water[i][j]<<" ";
-        cout<<"\n";
-    }
-    for(int i=0;i<n;i++){
-        for(int j=0;j<n;j++)cout<<color[i][j]<<" ";
+    /*
+    for(int i=0;i<2;i++){
+        for(int j=0;j<n;j++)cout<<dist[i][j];
         cout<<"\n";
     }*/
     
-    for(int i=0;i<n;i++){
-        for(int j=0;j<m;j++){
-            water[i][j]=0;
-            vis[i][j]=0;
-            color[i][j]=0;
-        }
-    }
-    return cnt;
+    return dist[ed][n-1];
 }
 
-void red(int rcur,int rcnt){
-    if(rcnt==r){
-        res=max(res,bfs());
-        return;
+void func(){
+    if(board[0][0]!='#'){
+        a=bfs(0,0);
+        b=bfs(0,1);
     }
-    for(int i=rcur;i<v.size();i++){
-        if(water[v[i].first][v[i].second]==0){
-            R.push_back({v[i].first,v[i].second});
-            red(i+1,rcnt+1);
-            R.pop_back();
-        }
+    if(board[1][0]!='#'){
+        c=bfs(1,0);
+        d=bfs(1,1);
     }
 }
 
-void func(int gcur,int gcnt){
-    if(gcnt==g){
-        red(0,0);
-        return;
-    }
-    for(int i=gcur;i<v.size();i++){
-        G.push_back({v[i].first,v[i].second});
-        func(i+1,gcnt+1);
-        G.pop_back();
-    }
-}
 
 int main()
 {
-    cin>>n>>m>>g>>r;
-    for(int i=0;i<n;i++){
-        for(int j=0;j<m;j++){
-            cin>>board[i][j];
-            if(board[i][j]==2)v.push_back({i,j});
-        }
-    }
-    func(0,0);
-    cout<<res;
+    ios_base :: sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    
+    cin>>n>>k;
+    for(int i=0;i<2;i++){
+        for(int j=0;j<n;j++)cin>>board[i][j];
+    }/*
+    for(int i=0;i<2;i++){
+        for(int j=0;j<n;j++)cout<<board[i][j];
+        cout<<"\n";
+    }*/
+    
+    func();
+    cout<<a<<" "<<b<<" "<<c<<" "<<d;
 }
-//18809
-//10번예제만 해결하면 끝!
+//31716 cpp
