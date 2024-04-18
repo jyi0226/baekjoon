@@ -5,8 +5,8 @@ using namespace std;
 char board[2][101010];
 int n,k;
 int dx[3]={0,-1,1},dy[3]={1,0,0};
-int a=0,b=0,c=0,d=0;
-
+int a=9999,b=9999,c=9999,d=9999;
+int res=0;
 bool vis[2][101010]={0,};
 int dist[2][101010]={0,};
 
@@ -45,8 +45,8 @@ int bfs(int st,int ed){
         for(int j=0;j<n;j++)cout<<dist[i][j];
         cout<<"\n";
     }*/
-    
-    return dist[ed][n-1];
+    if(dist[ed][n-1]==0)return 9999;
+    else return dist[ed][n-1];
 }
 
 void func(){
@@ -70,13 +70,25 @@ int main()
     cin>>n>>k;
     for(int i=0;i<2;i++){
         for(int j=0;j<n;j++)cin>>board[i][j];
-    }/*
-    for(int i=0;i<2;i++){
-        for(int j=0;j<n;j++)cout<<board[i][j];
-        cout<<"\n";
-    }*/
-    
+    }
     func();
-    cout<<a<<" "<<b<<" "<<c<<" "<<d;
+    //cout<<a<<" "<<b<<" "<<c<<" "<<d<<"\n";
+    if(board[0][0]=='.'&&board[0][n-1]=='.'&&board[1][0]=='.'&&board[1][n-1]=='.'){
+        res=min(a,d)*k+k-1;
+    }
+    else if(board[0][0]=='.'&&board[0][n-1]=='.'&&(board[1][0]!='.'||board[1][n-1]!='.')){
+        res=a*(k-1)+k-1+min(a,b);
+    }
+    else if(board[1][0]=='.'&&board[1][n-1]=='.'&&(board[0][0]!='.'||board[0][n-1]!='.')){
+        res=d*(k-1)+k-1+min(c,d);
+    }
+    else{
+        if(k==1){
+            res=min(min(a,b),min(c,d));
+        }
+        else res=0;
+    }
+    if(res==0)cout<<-1;
+    else cout<<res;
 }
 //31716 cpp
