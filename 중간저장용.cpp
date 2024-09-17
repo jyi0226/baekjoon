@@ -10,7 +10,7 @@ int cx,cy;
 long long res=0;
 
 //해야할거//
-//1.방향별 모래날림 구현
+//1.하 우 상 모래날림 구현
 
 void func(int x,int y,int dir){
     
