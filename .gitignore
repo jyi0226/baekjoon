@@ -1,4 +1,4 @@
 *.exe
 .vscode/
 .clang-format
-.complie_flags.txt
+.compile_flags.txt
