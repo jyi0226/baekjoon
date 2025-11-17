@@ -12,7 +12,7 @@ int main()
         cout << "Either";
     else if (n == 2)
         cout << "Odd";
-    else if (n == 10)
+    else if (n == 10 || n == 6)
         cout << "Odd";
     else if (n % 2 == 0)
         cout << "Even";
